@@ -6,7 +6,12 @@
 
 Membri:
       Chioaru Otilia
+      
       Ciobanu Teofil
+      
       Luchian Vlad
+      
       Serban Vlad-Andrei
+      
       Terchea Diana
+      
