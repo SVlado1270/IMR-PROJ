@@ -5,6 +5,7 @@
       Requirements: Implement an immersive app that has the purpose of exploring interactions, the usefulness in learning and having new experiences  in this medium
 
 Membri:
+      
       Chioaru Otilia
       
       Ciobanu Teofil
