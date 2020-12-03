@@ -1,0 +1,32 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 03.05.2013 14:55:29
+
+newmtl _20349_Old_Television_set_v120349_Old_Television_set
+	Ns 27.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.3000 0.3000 0.3000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka 20349_Old_Television_set.jpg
+	map_Kd 20349_Old_Television_set.jpg
+	map_bump -bm 0.0200 20349_Old_Television_set_bump.jpg
+	bump -bm 0.0200 20349_Old_Television_set_bump.jpg
+
+newmtl _20349_Old_Television_set_v1metal
+	Ns 29.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.5263 0.5263 0.5263
+	Ke 0.0000 0.0000 0.0000
+	map_Ka 20349_Old_Television_set.jpg
+	map_Kd 20349_Old_Television_set.jpg
