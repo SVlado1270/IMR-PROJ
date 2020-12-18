@@ -9,7 +9,12 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("SampleScene");
     }
-    
+
+    public void LoadRoom2()
+    {
+        SceneManager.LoadScene("Room_2");
+    }
+
     public void quitGame()
     {
 
