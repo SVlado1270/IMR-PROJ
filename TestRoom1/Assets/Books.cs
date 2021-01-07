@@ -11,6 +11,8 @@ public class Books : MonoBehaviour
     public GameObject chest1, chest2, banana1, banana2;
     public GameObject bagheta, key2, broasca;
     public GameObject maimuta1, pergament_final;
+    public GameObject planks1, cutie1, topor;
+    public GameObject cutie2, cutie3, cutie4, planks2, planks3;
     public double maxDistance = 0.6;
     public bool match = false;
     public bool first_chest_is_opened = false;
@@ -69,7 +71,31 @@ public class Books : MonoBehaviour
             }
         }
 
-        if(isNear(maimuta1, banana1, 3.0) && isNear(maimuta1, banana2, 3.0))
+        if (isNear(topor, cutie1, 1.1))
+        {
+            planks1.active = true;
+            cutie1.active = false;
+        }
+
+        if (isNear(topor, cutie2, 0.9))
+        {
+              bagheta.active = true;
+              cutie2.active = false;
+        }
+
+        if (isNear(topor, cutie3, 1.1))
+        {
+            planks2.active = true;
+            cutie3.active = false;
+        }
+
+        if (isNear(topor, cutie4, 1.0))
+        {
+            planks3.active = true;
+            cutie4.active = false;
+        }
+
+        if (isNear(maimuta1, banana1, 3.0) && isNear(maimuta1, banana2, 3.0))
         {
             pergament_final.active = true;
             Thread.Sleep(10);
