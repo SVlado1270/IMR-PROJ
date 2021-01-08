@@ -6,8 +6,8 @@ public class Room2Scripts : MonoBehaviour
 {
     public GameObject pergament3;
     public GameObject piesa1, piesa2, piesa3, key1;
-    public GameObject Einstein, key2, usaDulap, dulap;
-    public GameObject Sunflower, Est, pergament_etaj_clue;
+    public GameObject Einstein, key2, usaDulap, dulap, table_p;
+    public GameObject Sunflower, Est, pergament_etaj_clue, Nord;
     public GameObject tabla, pergament_final;
     public double maxDist = 6.0;
     // public GameObject Einstein, dulap, cheie;
@@ -25,8 +25,9 @@ public class Room2Scripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Vector3.Distance(Est.transform.position, Sunflower.transform.position));
-        if(isNear(piesa1, pergament3, maxDist) && isNear(piesa2, pergament3,maxDist) && isNear(piesa3, pergament3, maxDist))
+        //Debug.Log(Vector3.Distance(Est.transform.position, Sunflower.transform.position));
+        Debug.Log(Vector3.Distance(key2.transform.position, usaDulap.transform.position));
+        if (isNear(piesa1, pergament3, maxDist) && isNear(piesa2, pergament3,maxDist) && isNear(piesa3, pergament3, maxDist))
         {
             key1.active = true;
             piesa1.active = false;
@@ -34,10 +35,17 @@ public class Room2Scripts : MonoBehaviour
             piesa3.active = false;
         }
 
-        if(isNear(key2, usaDulap, 1.0))
+        if(isNear(key2, usaDulap, 2.0))
         {
             usaDulap.active = false;
             Einstein.active = true;
+            key2.active = false;
+        }
+
+        if (isNear(key1, table_p, 3.0))
+        {
+            Sunflower.active = true;
+            key1.active = false;
         }
 
         if (isNear(Sunflower, Est, maxDist))
@@ -51,6 +59,7 @@ public class Room2Scripts : MonoBehaviour
         {
             pergament_final.active = true;
             tabla.active = false;
+            Nord.active = false;
         }
     }
 }

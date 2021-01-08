@@ -54,11 +54,6 @@ public class Books : MonoBehaviour
             }
         }
 
-        if(isNear(bagheta, broasca, 5.0))
-        {
-            key2.active = true;
-            bagheta.active = false;
-        }
 
         if (!second_chest_is_opened)
         {
@@ -93,6 +88,12 @@ public class Books : MonoBehaviour
         {
             planks3.active = true;
             cutie4.active = false;
+        }
+
+        if (isNear(bagheta, broasca, 5.0))
+        {
+            key2.active = true;
+            bagheta.active = false;
         }
 
         if (isNear(maimuta1, banana1, 3.0) && isNear(maimuta1, banana2, 3.0))
