@@ -10,7 +10,6 @@ public class Room2Scripts : MonoBehaviour
     public GameObject Sunflower, Est, pergament_etaj_clue, Nord;
     public GameObject tabla, pergament_final;
     public double maxDist = 6.0;
-    // public GameObject Einstein, dulap, cheie;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +24,6 @@ public class Room2Scripts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Vector3.Distance(Est.transform.position, Sunflower.transform.position));
-        Debug.Log(Vector3.Distance(key2.transform.position, usaDulap.transform.position));
         if (isNear(piesa1, pergament3, maxDist) && isNear(piesa2, pergament3,maxDist) && isNear(piesa3, pergament3, maxDist))
         {
             key1.active = true;
