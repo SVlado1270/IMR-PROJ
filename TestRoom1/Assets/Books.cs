@@ -21,7 +21,7 @@ public class Books : MonoBehaviour
 
     public GameObject bagheta, topor;
     public GameObject cutie_bagheta;
-    public GameObject cutie1,  cutie2, cutie3;
+    public GameObject cutie1, cutie2, cutie3;
     public GameObject planks1, planks2, planks3;
     public double maxDistance = 0.6;
     public double chestDistance = 0.9;
@@ -36,10 +36,15 @@ public class Books : MonoBehaviour
     private bool crate2_is_destroyed = false;
     private bool crate3_is_destroyed = false;
 
+    private bool timer_started = false;
+    private float fire_start_time;
+
     // Start is called before the first frame update
     void Start()
     {
     }
+
+
 
     private bool isNear(GameObject o1, GameObject o2, double distance)
     {
@@ -51,11 +56,10 @@ public class Books : MonoBehaviour
         return isNear(monkey, banana1, 0.75) || isNear(monkey, banana2, 0.75);
     }
 
-    private void handle_empty_crates_destruction() 
+    private void handle_empty_crates_destruction()
     {
         double crate_min_dist = 1.75;
-        Debug.Log(Vector3.Distance(topor.transform.position, cutie1.transform.position));
-        if(!crate1_is_destroyed && isNear(topor, cutie1, crate_min_dist))
+        if (!crate1_is_destroyed && isNear(topor, cutie1, crate_min_dist))
         {
             crate1_is_destroyed = true;
             planks1.SetActive(true);
@@ -75,20 +79,14 @@ public class Books : MonoBehaviour
         }
     }
 
-    public void quitGame()
-    {
-
-        Application.Quit();
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (!match)
         {
-            if (isNear(dtop1, book_red, maxDistance) &&
-                isNear(dtop2, book_green, maxDistance) &&
-                isNear(dtop3, book_blue, maxDistance))
+            if (isNear(dtop1, book_red, 0.8) &&
+                isNear(dtop2, book_green, 0.8) &&
+                isNear(dtop3, book_blue, 0.8))
             {
                 match = true;
                 key1.SetActive(true);
@@ -160,16 +158,19 @@ public class Books : MonoBehaviour
             if (player_won)
             {
                 pergament_final.SetActive(true);
-                /*SceneManager.UnloadSceneAsync("SampleScene");
-                SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
-                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Menu"));*/
+                timer_started = true;
+                fire_start_time = Time.time;
             }
         }
 
-    }
+        if (timer_started)
+        {
+            float time_elapsed = Time.time - fire_start_time;
 
-    /*public void LoadMenu()
-    {
-        SceneManager.LoadScene("Menu");
-    }*/
+            if (time_elapsed > 5)
+            {
+                SceneManager.LoadScene("Menu");
+            }
+        }
+    }
 }

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Threading;
 using UnityEngine.SceneManagement;
 
 public class Room2Scripts : MonoBehaviour
@@ -15,39 +14,35 @@ public class Room2Scripts : MonoBehaviour
     private bool flower_is_active = false;
     private bool einst_is_active = false;
 
+    private bool timer_started = false;
+    private float fire_start_time;
+
+    private bool finished = false;
+    private bool second_key_dropped = false;
+    private bool pieces_together = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     bool isNear(GameObject o1, GameObject o2, double distance)
     {
         return Vector3.Distance(o1.transform.position, o2.transform.position) < distance;
     }
-
-    public void LoadMenu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
-
-    public void quitGame()
-    {
-
-        Application.Quit();
-    }
-
-
     // Update is called once per frame
     void Update()
     {
-        if (isNear(piesa1, pergament3, maxDist) && isNear(piesa2, pergament3,maxDist) && isNear(piesa3, pergament3, maxDist))
+        if (!pieces_together)
         {
-            Debug.Log("helo");
-            key1.active = true;
-            piesa1.active = false;
-            piesa2.active = false;
-            piesa3.active = false;
+            if (isNear(piesa1, pergament3, maxDist) && isNear(piesa2, pergament3, maxDist) && isNear(piesa3, pergament3, maxDist))
+            {
+                key1.active = true;
+                piesa1.active = false;
+                piesa2.active = false;
+                piesa3.active = false;
+                pieces_together = true;
+            }
         }
 
         if (!einst_is_active)
@@ -71,21 +66,41 @@ public class Room2Scripts : MonoBehaviour
             }
         }
 
-        if (isNear(Sunflower, Est, maxDist))
+
+        if (!second_key_dropped)
         {
-            key2.active = true;
-            pergament_etaj_clue.active = true;
-            Est.active = false;
+            if (isNear(Sunflower, Est, maxDist))
+            {
+                key2.active = true;
+                pergament_etaj_clue.active = true;
+                Est.active = false;
+                second_key_dropped = true;
+            }
         }
 
-        if (isNear(Einstein, tabla, maxDist))
+        if (!finished)
         {
-            pergament_fin.active = true;
-            tabla.active = false;
-            Nord.active = false;
-            /*LoadMenu();
-            Thread.Sleep(10);
-            quitGame();*/
+            if (isNear(Einstein, tabla, maxDist))
+            {
+                pergament_fin.active = true;
+                tabla.active = false;
+                Nord.active = false;
+                timer_started = true;
+                fire_start_time = Time.time;
+                finished = true;
+            }
+        }
+
+
+
+        if (timer_started)
+        {
+            float time_elapsed = Time.time - fire_start_time;
+
+            if (time_elapsed > 10)
+            {
+                SceneManager.LoadScene("Menu");
+            }
         }
     }
 }
