@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading;
+using UnityEngine.SceneManagement;
 
 public class Room2Scripts : MonoBehaviour
 {
@@ -23,6 +25,19 @@ public class Room2Scripts : MonoBehaviour
     {
         return Vector3.Distance(o1.transform.position, o2.transform.position) < distance;
     }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }
+
+    public void quitGame()
+    {
+
+        Application.Quit();
+    }
+
+
     // Update is called once per frame
     void Update()
     {
@@ -68,6 +83,9 @@ public class Room2Scripts : MonoBehaviour
             pergament_fin.active = true;
             tabla.active = false;
             Nord.active = false;
+            /*LoadMenu();
+            Thread.Sleep(10);
+            quitGame();*/
         }
     }
 }

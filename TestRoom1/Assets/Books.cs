@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
+using UnityEngine.SceneManagement;
 
 public class Books : MonoBehaviour
 {
@@ -72,6 +73,12 @@ public class Books : MonoBehaviour
             planks3.SetActive(true);
             cutie3.SetActive(false);
         }
+    }
+
+    public void quitGame()
+    {
+
+        Application.Quit();
     }
 
     // Update is called once per frame
@@ -153,9 +160,16 @@ public class Books : MonoBehaviour
             if (player_won)
             {
                 pergament_final.SetActive(true);
-                Thread.Sleep(10);
-                Application.Quit();
+                /*SceneManager.UnloadSceneAsync("SampleScene");
+                SceneManager.LoadScene("Menu", LoadSceneMode.Additive);
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Menu"));*/
             }
         }
+
     }
+
+    /*public void LoadMenu()
+    {
+        SceneManager.LoadScene("Menu");
+    }*/
 }
